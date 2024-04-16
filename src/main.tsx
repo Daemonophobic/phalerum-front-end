@@ -1,54 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
 import {
   createBrowserRouter,
-  Navigate,
   RouterProvider,
 } from "react-router-dom";
 import './index.css';
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/auth/login" replace />,
+    element: <HomePage />,
   },
   {
     path: "/auth/login",
     element: <LoginPage />,
-    // errorElement: <ErrorPage />,
   }, 
-  // {
-  //   path: "/auth/register",
-  //   element: <Register />,
-  //   errorElement: <ErrorPage />,
-  // },
-  // {
-  //   path: "/auth/login",
-  //   element: <Login />,
-  //   errorElement: <ErrorPage />,
-  // },
-  // {
-  //   path: "/auth/logout",
-  //   element: <Logout />,
-  //   errorElement: <ErrorPage />,
-  // },
-  // {
-  //   path: "/agents",
-  //   element: <Agents />,
-  //   errorElement: <ErrorPage />,
-  // },
-  // {
-  //   path: "/configs",
-  //   element: <Configurations />,
-  //   errorElement: <ErrorPage />,
-  // },
-  // {
-  //   path: "/admin",
-  //   element: <Admin />,
-  //   errorElement: <ErrorPage />,
-  // }
+  {
+    path: "/*",
+    element: <ErrorPage />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
