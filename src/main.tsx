@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import './index.css';
 import ErrorPage from './pages/ErrorPage';
+import LogoutPage from './pages/LogoutPage';
+import AgentsPage from './pages/AgentsPage';
 
 const router = createBrowserRouter([
   {
@@ -16,9 +18,17 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
+    path: "/agents",
+    element: <AgentsPage />,
+  },
+  {
     path: "/auth/login",
     element: <LoginPage />,
   }, 
+  {
+    path: "/auth/logout",
+    element: <LogoutPage />,
+  },
   {
     path: "/*",
     element: <ErrorPage />,

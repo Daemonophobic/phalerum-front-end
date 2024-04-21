@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import UserDto from "../data/DataTransferObjects/UserDto";
+import AgentDto from "../data/DataTransferObjects/AgentDto";
 
 export default class ApiClient {
     private apiUrl;
@@ -41,4 +42,42 @@ export default class ApiClient {
         })
     }
 
+    public logoutUser = async (): Promise<null> => {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.apiUrl}/auth/logout`, this.axiosConfig)
+            .then((_) => {
+                resolve(null);
+            })
+            .catch((err: Error) => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
+
+    public getOwnUserInfo = async (): Promise<UserDto> => {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.apiUrl}/users/me`, this.axiosConfig)
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((err: Error) => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
+
+    public getAgents = async (): Promise<AgentDto[]> => {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.apiUrl}/agents`, this.axiosConfig)
+            .then((res) => {
+                resolve(res.data.map((agent: any) => new AgentDto(agent)));
+            })
+            .catch((err: Error) => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
 }
