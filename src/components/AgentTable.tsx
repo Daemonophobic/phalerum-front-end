@@ -15,6 +15,7 @@ const AgentTable = () => {
     const emptyInput = () => {
         if (filterInput.current === null) return;
         filterInput.current.value = '';
+        setColumnFilters([{ id: "addedByUser", value: filterInput.current.value }]);
     }
 
     const handleFilterChange = (id: string) => {
@@ -47,7 +48,7 @@ const AgentTable = () => {
             <div style={{width: table.getTotalSize()}} className="flex justify-between items-center p-2">
                 <div className="flex p-1 pl-2 bg-gray-100 text-gray-400 rounded-lg items-center space-x-2">
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    <input onClick={emptyInput} ref={filterInput} onChange={() => handleFilterChange("addedByUser")} defaultValue="Filter by name" className="focus:text-gray-800 bg-gray-100 text-gray-400 rounded-lg outline-none h-8" />
+                    <input onFocus={emptyInput} ref={filterInput} onChange={() => handleFilterChange("addedByUser")} defaultValue="Filter by name" className="focus:text-gray-800 bg-gray-100 text-gray-400 rounded-lg outline-none h-8" />
                 </div>
                 <div className="flex space-x-2">
                     <button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">Add Agent</button>

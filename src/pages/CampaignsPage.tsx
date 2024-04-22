@@ -3,8 +3,9 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
+import CampaignModal from '../components/CampaignModal';
 
-const HomePage = () => {
+const CampaignsPage = () => {
     const validator = new Validator();
 
     const [showLoader, setShowLoader] = useState<boolean>(true);
@@ -25,9 +26,9 @@ const HomePage = () => {
             <div className='flex flex-col h-screen w-screen'>
                 <Header />
                 <div className='flex w-full h-full'>
-                    <Sidebar active="Home" />
+                    <Sidebar active="Campaigns" />
                     <div className="h-full w-full flex justify-center bg-defaultBackground z-0">
-                        <iframe src="https://grafana.stickybits.red/public-dashboards/59b587a6ad6a45e8804b7c983afc739a?orgId=1&theme=light" className='w-full h-full'></iframe>
+                        <CampaignModal />
                     </div>
                 </div>
             </div>
@@ -35,4 +36,4 @@ const HomePage = () => {
     );
 }
 
-export default HomePage;
+export default CampaignsPage;

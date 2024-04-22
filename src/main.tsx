@@ -11,6 +11,7 @@ import './index.css';
 import ErrorPage from './pages/ErrorPage';
 import LogoutPage from './pages/LogoutPage';
 import AgentsPage from './pages/AgentsPage';
+import CampaignsPage from './pages/CampaignsPage';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/agents",
     element: <AgentsPage />,
+  },
+  {
+    path: "/campaigns",
+    element: <CampaignsPage />,
   },
   {
     path: "/auth/login",

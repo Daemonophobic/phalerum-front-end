@@ -1,3 +1,6 @@
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const columns = [
     {
         accessorKey: 'agentName',
@@ -18,11 +21,6 @@ const columns = [
         }
     },
     {
-        accessorKey: 'master',
-        header: 'Master Node',
-        cell: (props: any) => <p className={`${props.getValue() ? 'bg-green-500' : ''} rounded-lg w-min text-white p-1`}>{String(props.getValue() ? true : '')}</p>
-    },
-    {
         accessorKey: 'os',
         header: 'OS',
         cell: (props: any) => <p>{props.getValue()}</p>
@@ -30,7 +28,12 @@ const columns = [
     {
         accessorKey: 'ipAddress',
         header: 'IP Address',
-        cell: (props: any) => <p>{props.getValue()}</p>
+        cell: (_: any) => <p>127.0.0.1</p>
+    },
+    {
+        accessorKey: 'master',
+        header: 'Master',
+        cell: (props: any) => <p className={`${props.getValue() ? 'bg-green-500' : ''} rounded-lg w-min text-white p-1 pl-2 pr-2`}>{<FontAwesomeIcon icon={faCheck} />}</p>
     },
     {
         accessorKey: 'createdAt',
