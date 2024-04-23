@@ -1,13 +1,13 @@
-import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
-import AgentDto from "../data/DataTransferObjects/AgentDto";
+import { flexRender, getCoreRowModel, getFilteredRowModel, useReactTable } from "@tanstack/react-table";
 import { useEffect, useRef, useState } from "react";
 import ApiClient from "../helpers/ApiClient";
-import columns from "../data/columnDefs/agents";
+import columns from "../data/columnDefs/campaigns";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import CampaignDto from "../data/DataTransferObjects/CampaignDto";
 
-const AgentTable = () => {
-    const [agents, setAgents] = useState<Partial<AgentDto[]>>([]);
+const CampaignTable = () => {
+    const [campaigns, setCampaigns] = useState<Partial<CampaignDto[]>>([]);
     const [columnFilters, setColumnFilters] = useState<{id: string, value: any}[]>([]);
     
     const filterInput = useRef<HTMLInputElement>(null);
@@ -27,20 +27,19 @@ const AgentTable = () => {
 
     useEffect(() => {
         const apiClient = new ApiClient();
-        apiClient.getAgents().then((data: AgentDto[]) => {
-            setAgents(data);
+        apiClient.getCampaigns().then((data: CampaignDto[]) => {
+            setCampaigns(data);
         });
     }, []);
 
     const table = useReactTable({
-        data: agents,
+        data: campaigns,
         columns,
         state: {
             columnFilters,
         },
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
         columnResizeMode: 'onChange',
     });
 
@@ -49,10 +48,10 @@ const AgentTable = () => {
             <div style={{width: table.getTotalSize()}} className="flex justify-between items-center p-2">
                 <div className="flex p-1 pl-2 bg-gray-100 text-gray-400 rounded-lg items-center space-x-2">
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    <input onFocus={emptyInput} ref={filterInput} onChange={() => handleFilterChange("addedByUser")} defaultValue="Filter by name" className="focus:text-gray-800 bg-gray-100 text-gray-400 rounded-lg outline-none h-8" />
+                    <input onFocus={emptyInput} ref={filterInput} onChange={() => handleFilterChange("name")} defaultValue="Filter by name" className="focus:text-gray-800 bg-gray-100 text-gray-400 rounded-lg outline-none h-8" />
                 </div>
                 <div className="flex space-x-2">
-                    <button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">Add Agent</button>
+                    <button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">Add Campaign</button>
                     <button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">Export</button>
                 </div>
             </div>
@@ -93,4 +92,4 @@ const AgentTable = () => {
     );
 }
 
-export default AgentTable;
+export default CampaignTable;

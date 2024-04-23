@@ -1,5 +1,5 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AvatarCell from "../../components/AvatarCell";
+import StatusPill from "../../components/StatusPill";
 
 const columns = [
     {
@@ -10,8 +10,8 @@ const columns = [
     {
         accessorKey: 'addedByUser',
         header: 'Added By',
-        size: 200,
-        cell: (props: any) => props.getValue() ? <p>{props.getValue().firstName} {props.getValue().lastName}</p> : <p>Agent</p>,
+        size: 300,
+        cell: (props: any) => props.getValue() ? <AvatarCell user={props.getValue()} /> : <p>Agent</p>,
         filterFn: (row: any, _: any, filterValue: any) => {
             if (row.original.addedByUser) {
                 return row.original.addedByUser.firstName.toLowerCase().includes(filterValue.toLowerCase()) || row.original.addedByUser.lastName.toLowerCase().includes(filterValue.toLowerCase());
@@ -33,7 +33,7 @@ const columns = [
     {
         accessorKey: 'master',
         header: 'Master',
-        cell: (props: any) => <p className={`${props.getValue() ? 'bg-green-500' : ''} rounded-lg w-min text-white p-1 pl-2 pr-2`}>{<FontAwesomeIcon icon={faCheck} />}</p>
+        cell: (props: any) => props.getValue() ? <StatusPill status={String(props.getValue())} /> : ''
     },
     {
         accessorKey: 'createdAt',

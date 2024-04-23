@@ -1,3 +1,4 @@
+import CampaignDto from "../data/DataTransferObjects/CampaignDto";
 import ApiClient from "./ApiClient";
 
 export default class Validator {
@@ -14,5 +15,20 @@ export default class Validator {
         }
 
         throw new Error("User not authenticated");
+    }
+
+    public validateCampaign = async (campaignId: string): Promise<CampaignDto> => {
+        return new Promise((resolve, reject) => {
+            if (campaignId === '') {
+                reject(new Error("Missing the required parameters"));
+            }
+            this.apiClient.getCampaign(campaignId)
+            .then((res) => {
+                resolve(res);
+            })
+            .catch((err: Error) => {
+                reject(err);
+            });
+        });
     }
 }

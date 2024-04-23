@@ -12,6 +12,7 @@ import ErrorPage from './pages/ErrorPage';
 import LogoutPage from './pages/LogoutPage';
 import AgentsPage from './pages/AgentsPage';
 import CampaignsPage from './pages/CampaignsPage';
+import CampaignPage from './pages/CampaignPage';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/campaigns",
     element: <CampaignsPage />,
+  },
+  {
+    path: "/campaigns/:id",
+    element: <CampaignPage />,
   },
   {
     path: "/auth/login",

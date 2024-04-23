@@ -1,4 +1,4 @@
-// import AgentTable from "./AgentTable";
+import CampaignTable from "./CampaignTable";
 
 const CampaignModal = () => {
     return (
@@ -6,7 +6,7 @@ const CampaignModal = () => {
             <div className="bg-white rounded-lg h-full w-full p-3 pl-5">
                 <h1 className="font-inter text-xl font-semibold pb-1">Campaigns</h1>
                 <p className="font-inter text-gray-600">Search and filter all campaigns.</p>
-                {/* <AgentTable /> */}
+                <CampaignTable />
             </div>
         </div>
     );

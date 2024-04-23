@@ -81,9 +81,35 @@ export default class ApiClient {
         });
     }
 
+    public getCampaigns = async (): Promise<any> => {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.apiUrl}/campaigns`, this.axiosConfig)
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((err: Error) => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
+
     public getCurrentCampaign = async (): Promise<any> => {
         return new Promise((resolve, reject) => {
             axios.get(`${this.apiUrl}/campaigns/current`, this.axiosConfig)
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((err: Error) => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
+
+    public getCampaign = async (campaignId: string): Promise<any> => {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.apiUrl}/campaigns/${campaignId}`, this.axiosConfig)
             .then((res) => {
                 resolve(res.data);
             })
