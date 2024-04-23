@@ -27,7 +27,7 @@ const Sidebar = (props: {active: string}) => {
                     <h1 className='font-semibold'>Current Campaign - #{campaign.number}</h1>
                     <div>
                         <p>{campaign.name}</p>
-                        <p className='text-gray-400'>Since: {typeof campaign.startDate === 'string' ? new Date(campaign.startDate).toLocaleDateString() : 'N/A'}</p>
+                        <p className='text-gray-400'>Since: {typeof campaign.startDate === 'string' ? new Date(campaign.startDate).toDateString() : 'N/A'}</p>
                     </div>
                 </div>
                 <div className='flex flex-col p-2 h-26 font-inter rounded-lg justify-between border-[#AFAFAF] border-2'>

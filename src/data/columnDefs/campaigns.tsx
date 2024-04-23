@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AvatarCell from "../../components/AvatarCell";
+import StatusPill from "../../components/StatusPill";
 
 const columns = [
     {
@@ -21,9 +22,24 @@ const columns = [
         cell: (props: any) => <p>{props.getValue()}</p>
     },
     {
+        accessorKey: 'active',
+        header: 'Active',
+        cell: (props: any) => props.getValue() ? <StatusPill status={String(props.getValue())} /> : ''
+    },
+    {
         accessorKey: 'createdBy',
         header: 'Created By',
         cell: (props: any) => props.getValue() ? <AvatarCell user={props.getValue()} /> : <AvatarCell user={{emailAddress: "System"}} />
+    },
+    {
+        accessorKey: 'startDate',
+        header: 'Start Date',
+        cell: (props: any) => <p>{new Date(props.getValue()).toDateString()}</p>
+    },
+    {
+        accessorKey: 'endDate',
+        header: 'End Date',
+        cell: (props: any) => <p>{new Date(props.getValue()).toDateString()}</p>
     }
     // {
     //     accessorKey: 'master',

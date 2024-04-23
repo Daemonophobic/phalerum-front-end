@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ApiClient from "../helpers/ApiClient";
 import columns from "../data/columnDefs/agents";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const AgentTable = () => {
     const [agents, setAgents] = useState<Partial<AgentDto[]>>([]);
@@ -37,6 +37,11 @@ const AgentTable = () => {
         columns,
         state: {
             columnFilters,
+        },
+        initialState: {
+            pagination: {
+                pageSize: 6,
+            },
         },
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
@@ -89,6 +94,16 @@ const AgentTable = () => {
                     }
                 </tbody>
             </table>
+            <br />
+            <div style={{width: table.getTotalSize()}} className="flex justify-between items-center">
+                <p className="pl-2 text-sm text-gray-700 font-medium">
+                    Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+                </p>
+                <div>
+                    <FontAwesomeIcon onClick={() => table.previousPage()} className={`p-2 text-gray-700 border rounded-lg rounded-r-none pl-3 pr-3 ${table.getCanPreviousPage() ? 'bg-white cursor-pointer' : 'bg-gray-50'} hover:bg-gray-50`} icon={faChevronLeft} />
+                    <FontAwesomeIcon onClick={() => table.nextPage()}  className={`p-2 text-gray-700 border rounded-lg rounded-l-none pl-3 pr-3 ${table.getCanNextPage() ? 'bg-white cursor-pointer' : 'bg-gray-50'} hover:bg-gray-50`} icon={faChevronRight} />
+                </div>
+            </div>
         </div>
     );
 }
