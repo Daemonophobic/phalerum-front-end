@@ -100,8 +100,8 @@ const AgentTable = () => {
                     Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
                 </p>
                 <div>
-                    <FontAwesomeIcon onClick={() => table.previousPage()} className={`p-2 text-gray-700 border rounded-lg rounded-r-none pl-3 pr-3 ${table.getCanPreviousPage() ? 'bg-white cursor-pointer' : 'bg-gray-50'} hover:bg-gray-50`} icon={faChevronLeft} />
-                    <FontAwesomeIcon onClick={() => table.nextPage()}  className={`p-2 text-gray-700 border rounded-lg rounded-l-none pl-3 pr-3 ${table.getCanNextPage() ? 'bg-white cursor-pointer' : 'bg-gray-50'} hover:bg-gray-50`} icon={faChevronRight} />
+                    <FontAwesomeIcon onClick={table.getCanPreviousPage() ? () => table.previousPage() : () => ''} className={`p-2 text-gray-700 border rounded-lg rounded-r-none pl-3 pr-3 ${table.getCanPreviousPage() ? 'bg-white cursor-pointer' : 'bg-gray-50'} hover:bg-gray-50`} icon={faChevronLeft} />
+                    <FontAwesomeIcon onClick={table.getCanNextPage() ? () => table.nextPage() : () => ''}  className={`p-2 text-gray-700 border rounded-lg rounded-l-none pl-3 pr-3 ${table.getCanNextPage() ? 'bg-white cursor-pointer' : 'bg-gray-50'} hover:bg-gray-50`} icon={faChevronRight} />
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
-import AgentModal from '../components/AgentModal';
+import AgentPanel from '../components/AgentPanel';
 
 const AgentsPage = () => {
     const validator = new Validator();
@@ -28,7 +28,7 @@ const AgentsPage = () => {
                 <div className='flex w-full h-full'>
                     <Sidebar active="Agents" />
                     <div className="h-full w-full flex justify-center bg-defaultBackground z-0">
-                        <AgentModal />
+                        <AgentPanel />
                     </div>
                 </div>
             </div>

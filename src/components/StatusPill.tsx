@@ -12,6 +12,7 @@ const StatusPill = (props: { status: string }) => {
             status.startsWith("true") ? "bg-green-100 text-green-800" : null,
             status.startsWith("inactive") ? "bg-yellow-100 text-yellow-800" : null,
             status.startsWith("offline") ? "bg-red-100 text-red-800" : null,
+            status.startsWith("false") ? "bg-red-100 text-red-800" : null,
           )
         }
       >

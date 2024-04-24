@@ -13,6 +13,7 @@ import LogoutPage from './pages/LogoutPage';
 import AgentsPage from './pages/AgentsPage';
 import CampaignsPage from './pages/CampaignsPage';
 import CampaignPage from './pages/CampaignPage';
+import JobsPage from './pages/JobsPage';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/campaigns/:id",
     element: <CampaignPage />,
+  },
+  {
+    path: "/jobs",
+    element: <JobsPage />,
   },
   {
     path: "/auth/login",
