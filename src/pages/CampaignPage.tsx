@@ -7,14 +7,12 @@ import { useParams } from 'react-router-dom';
 import CampaignDto from '../data/DataTransferObjects/CampaignDto';
 
 const CampaignPage = () => {
-    const validator = new Validator();
-
     const campaignId = useParams().id;
-
     const [campaign, setCampaign] = useState<Partial<CampaignDto>>({});
     const [showLoader, setShowLoader] = useState<boolean>(true);
 
     useEffect(() => {
+        const validator = new Validator();
         validator.validateAuthenticated()
         .then((result) => {
             result ? setShowLoader(false) : window.location.href = "/auth/login";

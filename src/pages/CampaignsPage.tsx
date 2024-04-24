@@ -6,11 +6,10 @@ import LoadingPage from './LoadingPage';
 import CampaignPanel from '../components/CampaignPanel';
 
 const CampaignsPage = () => {
-    const validator = new Validator();
-
     const [showLoader, setShowLoader] = useState<boolean>(true);
 
     useEffect(() => {
+        const validator = new Validator();
         validator.validateAuthenticated()
         .then((result) => {
             result ? setShowLoader(false) : window.location.href = "/auth/login";

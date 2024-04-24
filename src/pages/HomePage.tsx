@@ -5,11 +5,10 @@ import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
 
 const HomePage = () => {
-    const validator = new Validator();
-
     const [showLoader, setShowLoader] = useState<boolean>(true);
 
     useEffect(() => {
+        const validator = new Validator();
         validator.validateAuthenticated()
         .then((result) => {
             result ? setShowLoader(false) : window.location.href = "/auth/login";
