@@ -3,9 +3,9 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
-import CampaignPanel from '../components/CampaignPanel';
+import JobPanel from '../components/JobPanel';
 
-const CampaignsPage = () => {
+const JobsPage = () => {
     const validator = new Validator();
 
     const [showLoader, setShowLoader] = useState<boolean>(true);
@@ -26,9 +26,9 @@ const CampaignsPage = () => {
             <div className='flex flex-col h-screen w-screen'>
                 <Header />
                 <div className='flex w-full h-full'>
-                    <Sidebar active="Campaigns" />
+                    <Sidebar active="Jobs" />
                     <div className="h-full w-full flex justify-center bg-defaultBackground z-0">
-                        <CampaignPanel />
+                        <JobPanel />
                     </div>
                 </div>
             </div>
@@ -36,4 +36,4 @@ const CampaignsPage = () => {
     );
 }
 
-export default CampaignsPage;
+export default JobsPage;

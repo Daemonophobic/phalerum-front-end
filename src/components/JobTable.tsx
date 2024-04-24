@@ -1,13 +1,13 @@
-import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
+import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
+import JobDto from "../data/DataTransferObjects/JobDto";
 import { useEffect, useRef, useState } from "react";
 import ApiClient from "../helpers/ApiClient";
-import columns from "../data/columnDefs/campaigns";
+import columns from "../data/columnDefs/jobs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import CampaignDto from "../data/DataTransferObjects/CampaignDto";
 
-const CampaignTable = () => {
-    const [campaigns, setCampaigns] = useState<Partial<CampaignDto[]>>([]);
+const JobTable = () => {
+    const [jobs, setJobs] = useState<Partial<JobDto[]>>([]);
     const [columnFilters, setColumnFilters] = useState<{id: string, value: any}[]>([]);
     
     const filterInput = useRef<HTMLInputElement>(null);
@@ -15,7 +15,7 @@ const CampaignTable = () => {
     const emptyInput = () => {
         if (filterInput.current === null) return;
         filterInput.current.value = '';
-        setColumnFilters([{ id: "addedByUser", value: filterInput.current.value }]);
+        setColumnFilters([{ id: "jobName", value: filterInput.current.value }]);
     }
 
     const handleFilterChange = (id: string) => {
@@ -27,13 +27,13 @@ const CampaignTable = () => {
 
     useEffect(() => {
         const apiClient = new ApiClient();
-        apiClient.getCampaigns().then((data: CampaignDto[]) => {
-            setCampaigns(data);
+        apiClient.getJobs().then((data: JobDto[]) => {
+            setJobs(data);
         });
     }, []);
 
     const table = useReactTable({
-        data: campaigns,
+        data: jobs,
         columns,
         state: {
             columnFilters,
@@ -42,10 +42,17 @@ const CampaignTable = () => {
             pagination: {
                 pageSize: 6,
             },
+            sorting: [
+              {
+                id: 'disabled',
+                desc: false,
+              },
+            ],
         },
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel(),
         columnResizeMode: 'onChange',
     });
 
@@ -54,10 +61,10 @@ const CampaignTable = () => {
             <div style={{width: table.getTotalSize()}} className="flex justify-between items-center p-2">
                 <div className="flex p-1 pl-2 bg-gray-100 text-gray-400 rounded-lg items-center space-x-2">
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    <input onFocus={emptyInput} ref={filterInput} onChange={() => handleFilterChange("name")} defaultValue="Filter by name" className="focus:text-gray-800 bg-gray-100 text-gray-400 rounded-lg outline-none h-8" />
+                    <input onFocus={emptyInput} ref={filterInput} onChange={() => handleFilterChange("jobName")} defaultValue="Filter by name" className="focus:text-gray-800 bg-gray-100 text-gray-400 rounded-lg outline-none h-8" />
                 </div>
                 <div className="flex space-x-2">
-                    <button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">Add Campaign</button>
+                    <button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">Add Job</button>
                     <button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">Export</button>
                 </div>
             </div>
@@ -108,4 +115,4 @@ const CampaignTable = () => {
     );
 }
 
-export default CampaignTable;
+export default JobTable;

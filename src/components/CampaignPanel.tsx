@@ -1,6 +1,6 @@
 import CampaignTable from "./CampaignTable";
 
-const CampaignModal = () => {
+const CampaignPanel = () => {
     return (
         <div className="w-full h-full flex flex-col justify-center p-5">
             <div className="bg-white rounded-lg h-full w-full p-3 pl-5">
@@ -12,4 +12,4 @@ const CampaignModal = () => {
     );
 }
 
-export default CampaignModal;
+export default CampaignPanel;

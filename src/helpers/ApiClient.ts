@@ -119,4 +119,17 @@ export default class ApiClient {
             });
         });
     }
+
+    public getJobs = async (): Promise<any> => {
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.apiUrl}/jobs`, this.axiosConfig)
+            .then((res) => {
+                resolve(res.data);
+            })
+            .catch((err: Error) => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
 }
