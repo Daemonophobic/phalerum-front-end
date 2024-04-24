@@ -26,7 +26,7 @@ const HomePage = () => {
                 <div className='flex w-full h-full'>
                     <Sidebar active="Home" />
                     <div className="h-full w-full flex justify-center bg-defaultBackground z-0">
-                        <iframe src="https://grafana.stickybits.red/public-dashboards/59b587a6ad6a45e8804b7c983afc739a?orgId=1&theme=light" className='w-full h-full'></iframe>
+                        <iframe src={`https://grafana.stickybits.red/public-dashboards/59b587a6ad6a45e8804b7c983afc739a?orgId=1&theme=${window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'}`} className='w-full h-full'></iframe>
                     </div>
                 </div>
             </div>

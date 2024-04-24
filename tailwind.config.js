@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: {
         defaultBackground: "#F9F9F9",
+        darkBackground: "#1F1E24",
         currentPage: "#EAEAEA",
       },
       height: {

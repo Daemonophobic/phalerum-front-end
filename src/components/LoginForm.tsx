@@ -89,20 +89,20 @@ const LoginForm = () => {
     }, [showError]);
 
     return (
-        <div className="flex flex-col sm:w-5/12 w-9/12 space-y-4">
+        <div className="flex flex-col sm:w-5/12 w-9/12 space-y-4 dark:text-white">
             <h1 className={`absolute font-inter bg-[#F95B6A] text-white p-2 rounded-lg left-1/2 transition-all opactiy-100 -translate-x-1/2 top-4 ${showAlert ? '' : 'opacity-0'}`}>Please fill in the correct required information</h1>
             <h1 className={`absolute font-inter bg-[#F95B6A] text-white p-2 rounded-lg left-1/2 transition-all opactiy-100 -translate-x-1/2 top-4 ${showError ? '' : 'opacity-0'}`}>{message}</h1>
             <h1 className="font-inter font-bold text-3xl text-center md:text-left">Sign in to A-ware BSF</h1>
             <label htmlFor="email" className="font-inter text-xl">Email</label>
-            <input type="email" ref={email} onChange={checkDetails} id="email" className={`bg-[#F9F9F9] w-full pl-3 border-2 focus:ring-2 outline-none border-slate-200 rounded-lg h-10 ${detailsSubmitted ? 'text-gray-400' : ''}`} disabled={detailsSubmitted} />
+            <input type="email" ref={email} onChange={checkDetails} id="email" className={`bg-[#F9F9F9] dark:text-black w-full pl-3 border-2 focus:ring-2 dark:focus:ring-blue-300 outline-none border-slate-200 rounded-lg h-10 ${detailsSubmitted ? 'text-gray-400' : ''}`} disabled={detailsSubmitted} />
             <label htmlFor="password" className="font-inter text-xl">Password</label>
-            <input type="password" ref={password} onChange={checkDetails} id="password" className={`bg-[#F9F9F9] w-full pl-2 border-2 focus:ring-2 outline-none border-slate-200 rounded-lg h-10 ${detailsSubmitted ? 'text-gray-400' : ''}`} disabled={detailsSubmitted} />
+            <input type="password" ref={password} onChange={checkDetails} id="password" className={`bg-[#F9F9F9] dark:text-black w-full pl-2 border-2 focus:ring-2 dark:focus:ring-blue-300 outline-none border-slate-200 rounded-lg h-10 ${detailsSubmitted ? 'text-gray-400' : ''}`} disabled={detailsSubmitted} />
             <label htmlFor="OTP" className={`${detailsSubmitted ? '' : 'hidden'} font-inter text-xl`}>OTP</label>
-            <input type="text" inputMode="numeric" onChange={checkOTP} ref={OTP} id="OTP" className={`${detailsSubmitted ? '' : 'hidden'} bg-[#F9F9F8] w-full pl-3 border-2 focus:ring-2 outline-none border-slate-200 rounded-lg h-10`} />
+            <input type="text" inputMode="numeric" onChange={checkOTP} ref={OTP} id="OTP" className={`${detailsSubmitted ? '' : 'hidden'} bg-[#F9F9F8] w-full pl-3 dark:text-black border-2 focus:ring-2 dark:focus:ring-blue-300 outline-none border-slate-200 rounded-lg h-10`} />
             <div className="flex items-center space-x-3">
                 <label className="relative flex items-center rounded-full cursor-pointer" htmlFor="checkbox">
                     <input type="checkbox"
-                        ref={keepSession} onChange={checkDetails} className="before:content[''] peer relative h-8 w-8 cursor-pointer appearance-none outline-none focus:ring-2 rounded-md border-2 border-slate-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:bg-[#F95B6A] checked:before:bg-gray-900 hover:before:opacity-10"
+                        ref={keepSession} onChange={checkDetails} className="before:content[''] peer relative h-8 w-8 cursor-pointer appearance-none outline-none focus:ring-2 dark:focus:ring-blue-300 rounded-md border-2 border-slate-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:bg-[#F95B6A] checked:before:bg-gray-900 hover:before:opacity-10"
                         id="checkbox" />
                     <span
                       className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">

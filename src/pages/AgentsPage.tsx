@@ -26,7 +26,7 @@ const AgentsPage = () => {
                 <Header />
                 <div className='flex w-full h-full'>
                     <Sidebar active="Agents" />
-                    <div className="h-full w-full flex justify-center bg-defaultBackground z-0">
+                    <div className="h-full w-full flex justify-center bg-defaultBackground dark:bg-[#111217] z-0">
                         <AgentPanel />
                     </div>
                 </div>

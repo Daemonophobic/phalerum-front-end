@@ -1,4 +1,5 @@
 import logo from '../assets/logo-small.png';
+import logoDark from '../assets/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, } from '@fortawesome/free-regular-svg-icons';
 import { faRightFromBracket, faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -27,15 +28,15 @@ const Header = () => {
     }, [])
 
     return (
-        <nav className="flex h-16 pl-8 pr-8 bg-white w-screen items-center justify-between shadow-md z-10">
+        <nav className="flex h-16 pl-8 pr-8 bg-white dark:bg-darkBackground dark:text-white dark:border-b dark:border-[#2E3136] w-screen items-center justify-between shadow-md z-10">
             <div className='flex items-center'>                    
                 <div onClick={() => toggleSideMenu()} className={`relative transition-all ease-in flex flex-col hover:bg-gray-100 rounded-lg h-10 w-10 justify-evenly items-center mr-3 cursor-pointer`}>
-                    <span className={`absolute top-1/4 w-8 rounded-lg border-2 border-black`} />
-                    <span className={`absolute top-1/2 w-8 rounded-lg border-2 border-black`} />
-                    <span className={`absolute top-3/4 w-8 rounded-lg border-2 border-black`} />
+                    <span className={`absolute top-1/4 w-8 rounded-lg border-2 dark:border-white border-black`} />
+                    <span className={`absolute top-1/2 w-8 rounded-lg border-2 dark:border-white border-black`} />
+                    <span className={`absolute top-3/4 w-8 rounded-lg border-2 dark:border-white border-black`} />
                 </div>
                 <Link to="/">
-                    <img className='h-16' src={logo} />
+                    { window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? <img className='h-16' src={logoDark} /> : <img className='h-16' src={logo} /> }
                 </Link> 
             </div>
             <div className='flex items-center'>

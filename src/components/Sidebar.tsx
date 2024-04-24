@@ -15,7 +15,7 @@ const Sidebar = (props: {active: string}) => {
     }, []);
 
     return (
-        <div className="flex flex-col h-full w-80 shadow-md z-10 justify-between">
+        <div className="flex flex-col h-full w-80 shadow-md z-10 justify-between dark:border-r dark:border-[#2E3136] dark:bg-darkBackground dark:text-white">
             <div className="p-3 flex flex-col space-y-3">
                 <SidebarButton to="/" icon={faHome} active={props.active === "Home" ? true : false} name="Home" />
                 <SidebarButton to="/campaigns" icon={faFlag} active={props.active === "Campaigns" ? true : false} name="Campaigns" />

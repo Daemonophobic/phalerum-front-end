@@ -62,10 +62,10 @@ const CampaignTable = () => {
                 </div>
             </div>
             <table className="font-inter shadow-md overflow-hidden rounded-lg ml-2 divide-y divide-gray-200" width={table.getTotalSize()} >
-                <thead className="bg-gray-100">
+                <thead className="bg-gray-100 dark:bg-gray-800">
                     {table.getHeaderGroups().map((headerGroup) => <tr key={headerGroup.id}>
                         {headerGroup.headers.map(
-                            header => <th style={{width: header.getSize()}} className="relative group group-hover:opacity-100 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" key={header.id}>
+                            header => <th style={{width: header.getSize()}} className="relative group group-hover:opacity-100 px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider" key={header.id}>
                                 {String(header.column.columnDef.header)}
                                 <div onMouseDown={
                                     header.getResizeHandler()
@@ -96,7 +96,7 @@ const CampaignTable = () => {
             </table>
             <br />
             <div style={{width: table.getTotalSize()}} className="flex justify-between items-center">
-                <p className="pl-2 text-sm text-gray-700 font-medium">
+                <p className="pl-2 text-sm text-gray-700 dark:text-gray-300 font-medium">
                     Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
                 </p>
                 <div>

@@ -21,7 +21,7 @@ const LoginPage = () => {
     return (
         <>
             <LoadingPage showLoader={showLoader} />
-            <div className="flex m-0 p-0 bg-defaultBackground">
+            <div className="flex m-0 p-0 bg-defaultBackground dark:bg-darkBackground">
                 <img className='h-screen select-none lg:block hidden' src={backdrop} alt='backdrop' draggable='false' />
                 <div className='flex w-full h-screen justify-center items-center'>
                     <LoginForm />

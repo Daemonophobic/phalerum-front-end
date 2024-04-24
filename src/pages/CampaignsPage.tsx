@@ -26,7 +26,7 @@ const CampaignsPage = () => {
                 <Header />
                 <div className='flex w-full h-full'>
                     <Sidebar active="Campaigns" />
-                    <div className="h-full w-full flex justify-center bg-defaultBackground z-0">
+                    <div className="h-full w-full flex justify-center bg-defaultBackground dark:bg-[#111217] z-0">
                         <CampaignPanel />
                     </div>
                 </div>
