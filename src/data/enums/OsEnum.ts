@@ -1,6 +1,6 @@
 enum OS {
-    Windows = 'Windows',
-    Linux = 'Linux',
+	Windows = 'Windows',
+	Linux = 'Linux',
 }
 
 export default OS;

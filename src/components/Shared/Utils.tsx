@@ -1,5 +1,5 @@
 const classNames = (...classes: any) => {
-    return classes.filter(Boolean).join(" ");
-}
+	return classes.filter(Boolean).join(' ');
+};
 
-export {classNames};
+export { classNames };
