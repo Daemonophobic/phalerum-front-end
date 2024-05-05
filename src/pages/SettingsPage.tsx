@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
 import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
 
-const HomePage = () => {
-	document.title = 'Home - A-ware BSF';
+const SettingsPage = () => {
+	document.title = 'Settings - A-ware BSF';
 
 	const [showLoader, setShowLoader] = useState<boolean>(true);
 
@@ -14,8 +13,8 @@ const HomePage = () => {
 		validator
 			.validateAuthenticated()
 			.then((result) => {
-				result ?
-					setShowLoader(false)
+				result
+					? setShowLoader(false)
 					: (window.location.href = '/auth/login');
 			})
 			.catch((_: Error) => {
@@ -29,12 +28,8 @@ const HomePage = () => {
 			<div className="flex flex-col h-screen w-screen">
 				<Header />
 				<div className="flex w-full h-full">
-					<Sidebar active="Home" />
+					{/* <Sidebar active="Home" /> */}
 					<div className="h-full w-full flex justify-center bg-defaultBackground z-0">
-						<iframe
-							src="https://grafana.stickybits.red/public-dashboards/59b587a6ad6a45e8804b7c983afc739a?orgId=1&theme=light"
-							className="w-full h-full"
-						></iframe>
 					</div>
 				</div>
 			</div>
@@ -42,4 +37,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default SettingsPage;
