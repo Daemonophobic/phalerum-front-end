@@ -84,7 +84,7 @@ const Header = () => {
 				<div className={`absolute ${profileClicked ? 'opacity-100' : 'opacity-0 pointer-events-none'} bg-white z-30 rounded-lg shadow-lg flex flex-col border-2 transition-all ${user.admin ? 'translate-y-20' : 'translate-y-16'} p-2`}>
 					<Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/profile"><FontAwesomeIcon icon={faUser} /> Profile</Link>
 					<Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/preferences"><FontAwesomeIcon icon={faDroplet} /> Preferences</Link>
-					{user.admin === true ? <Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/admin"><FontAwesomeIcon icon={faGear} /> Admin</Link> : null}
+					{user.admin === true ? <Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/admin/users"><FontAwesomeIcon icon={faGear} /> Admin</Link> : null}
 				</div>
 				<Link className="mt-1" to="/auth/logout">
 					<FontAwesomeIcon

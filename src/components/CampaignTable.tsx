@@ -15,14 +15,14 @@ import {
 	faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
 import CampaignDto from '../data/DataTransferObjects/CampaignDto';
-import CampaignModal from './CampaignModal';
+// import CampaignModal from './CampaignModal';
 
 const CampaignTable = () => {
 	const [campaigns, setCampaigns] = useState<Partial<CampaignDto[]>>([]);
 	const [columnFilters, setColumnFilters] = useState<
 		{ id: string; value: any }[]
 	>([]);
-	const [isOpen, setIsOpen] = useState(false);
+	// const [isOpen, setIsOpen] = useState(false);
 
 	const filterInput = useRef<HTMLInputElement>(null);
 
@@ -67,7 +67,7 @@ const CampaignTable = () => {
 
 	return (
 		<div className="w-full h-min">
-			<CampaignModal isOpen={isOpen} setIsOpen={setIsOpen} />
+			{/* <CampaignModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
 			<div
 				style={{ width: table.getTotalSize() }}
 				className="flex justify-between items-center p-2"
@@ -83,9 +83,9 @@ const CampaignTable = () => {
 					/>
 				</div>
 				<div className="flex space-x-2">
-					<button onClick={() => setIsOpen(true)} className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">
+					{/* <button onClick={() => setIsOpen(true)} className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">
 						Add Campaign
-					</button>
+					</button> */}
 					<button className="bg-[#F95B6A] text-white px-4 py-2 rounded-lg">
 						Export
 					</button>

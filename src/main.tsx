@@ -13,6 +13,7 @@ import CampaignPage from './pages/CampaignPage';
 import JobsPage from './pages/JobsPage';
 import SettingsPage from './pages/SettingsPage';
 import * as Sentry from "@sentry/react";
+import JobPage from './pages/JobPage';
 
 const router = createBrowserRouter([
 	{
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
 		element: <JobsPage />,
 	},
 	{
+		path: '/jobs/:id',
+		element: <JobPage />,
+	},
+	{
 		path: '/auth/login',
 		element: <LoginPage />,
 	},
@@ -49,6 +54,14 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/settings/*',
+		element: <SettingsPage />,
+	},
+	{
+		path: '/admin',
+		element: <Navigate to="/admin/users" />,
+	},
+	{
+		path: '/admin/*',
 		element: <SettingsPage />,
 	},
 	{

@@ -2,14 +2,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AvatarCell from '../../components/AvatarCell';
 import StatusPill from '../../components/StatusPill';
 import { faLinux, faWindows } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 const columns = [
 	{
-		accessorKey: 'jobName',
+		accessorKey: 'name',
 		header: 'Name',
-		cell: (props: any) => (
-			<p className="w-32 truncate">{props.getValue()}</p>
-		),
+		size: 200,
+		cell: (props: { row: any }) =>
+			props.row.original.grafanaId !== '' ? (
+				<Link
+					to={`/jobs/${props.row.original._id}`}
+					className="underline italic w-32 truncate"
+				>
+					{props.row.original.jobName}
+				</Link>
+			) : (
+				<p className='w-32 truncate'>{props.row.original.jobName}</p>
+			),
 	},
 	{
 		accessorKey: 'jobDescription',
@@ -47,7 +57,12 @@ const columns = [
 		accessorKey: 'createdBy',
 		header: 'Created By',
 		size: 400,
-		cell: (props: any) => <AvatarCell user={props.getValue()} />,
+		cell: (props: any) =>
+			props.getValue() ? (
+				<AvatarCell user={props.getValue()} />
+			) : (
+				<AvatarCell user={{ emailAddress: 'System' }} />
+			),
 	},
 ];
 
