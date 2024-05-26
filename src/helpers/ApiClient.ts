@@ -159,6 +159,21 @@ export default class ApiClient {
 		});
 	};
 
+	public getJob = async (jobId: string): Promise<any> => {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`${this.apiUrl}/jobs/${jobId}`, this.axiosConfig)
+				.then((res) => {
+					resolve(res.data);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+					reject(err);
+				});
+		});
+	};
+
+
 	public addAgent = async (agent: Partial<AgentDto>): Promise<any> => {
 		return new Promise((resolve, reject) => {
 			if (

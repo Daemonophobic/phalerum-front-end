@@ -43,7 +43,7 @@ const columns = [
 		accessorKey: 'ipAddress',
 		header: 'IP Address',
 		size: 200,
-		cell: (_: any) => <p>127.0.0.1</p>,
+		cell: (props: any) => <p>{props.getValue()}</p>,
 	},
 	{
 		accessorKey: 'master',

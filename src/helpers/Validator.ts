@@ -1,4 +1,5 @@
 import CampaignDto from '../data/DataTransferObjects/CampaignDto';
+import JobDto from '../data/DataTransferObjects/JobDto';
 import ApiClient from './ApiClient';
 
 export default class Validator {
@@ -27,6 +28,24 @@ export default class Validator {
 			}
 			this.apiClient
 				.getCampaign(campaignId)
+				.then((res) => {
+					resolve(res);
+				})
+				.catch((err: Error) => {
+					reject(err);
+				});
+		});
+	};
+
+	public validateJob = async (
+		jobId: string
+	): Promise<JobDto> => {
+		return new Promise((resolve, reject) => {
+			if (jobId === '') {
+				reject(new Error('Missing the required parameters'));
+			}
+			this.apiClient
+				.getJob(jobId)
 				.then((res) => {
 					resolve(res);
 				})
