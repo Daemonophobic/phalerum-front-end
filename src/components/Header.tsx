@@ -1,11 +1,9 @@
 import logo from '../assets/logo-small.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faFlag } from '@fortawesome/free-regular-svg-icons';
 import {
 	faRightFromBracket,
 	faCaretDown,
-	faGear,
-	faDroplet,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -81,10 +79,10 @@ const Header = () => {
 						icon={faCaretDown}
 					/>
 				</div>
-				<div className={`absolute ${profileClicked ? 'opacity-100' : 'opacity-0 pointer-events-none'} bg-white z-30 rounded-lg shadow-lg flex flex-col border-2 transition-all ${user.admin ? 'translate-y-20' : 'translate-y-16'} p-2`}>
-					<Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/profile"><FontAwesomeIcon icon={faUser} /> Profile</Link>
-					<Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/preferences"><FontAwesomeIcon icon={faDroplet} /> Preferences</Link>
-					{user.admin === true ? <Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/admin/users"><FontAwesomeIcon icon={faGear} /> Admin</Link> : null}
+				<div className={`absolute ${profileClicked ? 'opacity-100' : 'opacity-0 pointer-events-none'} bg-white z-30 rounded-lg shadow-lg flex flex-col border-2 transition-all ${user.admin ? 'translate-y-12' : 'translate-y-16'} p-2`}>
+					{/* <Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/profile"><FontAwesomeIcon icon={faUser} /> Profile</Link> */}
+					{/* <Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/preferences"><FontAwesomeIcon icon={faDroplet} /> Preferences</Link> */}
+					{user.admin === true ? <Link onClick={() => setProfileClicked(false)} className='p-2 pr-28 rounded-lg hover:bg-slate-100 w-full' to="/settings/campaign"><FontAwesomeIcon icon={faFlag} /> Campaign</Link> : null}
 				</div>
 				<Link className="mt-1" to="/auth/logout">
 					<FontAwesomeIcon

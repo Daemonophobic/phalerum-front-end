@@ -41,7 +41,7 @@ const columns = [
 	{
 		accessorKey: 'disabled',
 		header: 'Enabled',
-		cell: (props: any) => <StatusPill status={String(!props.getValue())} />,
+		cell: (props: { row: any }) => <StatusPill onClick={true} _id={props.row.original._id} status={String(!props.row.original.disabled)} />,
 		sortingFns: 'alphanumeric',
 	},
 	{

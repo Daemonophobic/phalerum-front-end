@@ -195,4 +195,74 @@ export default class ApiClient {
 				});
 		});
 	};
+
+	public getOutputs = async (jobId: string, page: number): Promise<any> => {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`${this.apiUrl}/jobs/output/${jobId}?amount=7&page=${page}`, this.axiosConfig)
+				.then((res) => {
+					resolve(res.data);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+					reject(err);
+				});
+		});
+	}
+
+	public getOutputAmount = async (jobId: string): Promise<any> => {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`${this.apiUrl}/jobs/output/${jobId}/amount`, this.axiosConfig)
+				.then((res) => {
+					resolve(res.data);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+					reject(err);
+				});
+		});
+	}
+
+	public getSubnets = async (): Promise<any> => {
+		return new Promise((resolve, reject) => {
+			axios
+				.get(`${this.apiUrl}/settings/campaign/subnets`, this.axiosConfig)
+				.then((res) => {
+					resolve(res.data);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+					reject(err);
+				});
+		});
+	}
+
+	public setSubnets = async (subnets: string[]): Promise<any> => {
+		return new Promise((resolve, reject) => {
+			axios
+				.put(`${this.apiUrl}/settings/campaign/subnets`, { subnets }, this.axiosConfig)
+				.then((res) => {
+					resolve(res.data);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+					reject(err);
+				});
+		});
+	}
+
+	public toggleJob = async (_id: string): Promise<any> => {
+		return new Promise((resolve, reject) => {
+			axios
+				.put(`${this.apiUrl}/jobs/toggle/${_id}`, {}, this.axiosConfig)
+				.then((res) => {
+					resolve(res.data);
+				})
+				.catch((err: Error) => {
+					console.log(err);
+					reject(err);
+				});
+		});
+	}
 }

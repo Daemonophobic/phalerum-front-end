@@ -13,6 +13,7 @@ export default class AgentDto {
 	communicationToken: any;
 	createdAt: EpochTimeStamp;
 	os: OS;
+	partialMaster: boolean;
 
 	constructor(data: any) {
 		this._id = data._id;
@@ -26,5 +27,6 @@ export default class AgentDto {
 		this.communicationToken = data.communicationToken;
 		this.createdAt = data.createdAt;
 		this.os = data.os;
+		this.partialMaster = data.partialMaster;
 	}
 }

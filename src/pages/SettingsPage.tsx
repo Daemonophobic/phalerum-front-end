@@ -4,14 +4,12 @@ import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
 import SettingsSidebar from '../components/SettingsSidebar';
 import { useMatch } from 'react-router-dom';
+import CampaignSettings from '../components/CampaignSettings';
 
 const SettingsPage = () => {
 	document.title = 'Settings - A-ware BSF';
 
-	const isProfile = useMatch("/settings/profile");
-	const isPreferences = useMatch("/settings/preferences");
-	const isUsers = useMatch("/admin/users");
-	const isRoles = useMatch("/admin/roles");
+	const isCampaign = useMatch("/settings/campaign");
 
 	const [showLoader, setShowLoader] = useState<boolean>(true);
 
@@ -35,8 +33,9 @@ const SettingsPage = () => {
 			<div className="flex flex-col h-screen w-screen">
 				<Header />
 				<div className="flex w-full h-full">
-					<SettingsSidebar isProfile={isProfile} isPreferences={isPreferences} isUsers={isUsers} isRoles={isRoles} />
+					<SettingsSidebar isCampaign={isCampaign} />
 					<div className="h-full w-full flex justify-center bg-defaultBackground z-0">
+						{isCampaign ? <CampaignSettings /> : ''}
 					</div>
 				</div>
 			</div>
