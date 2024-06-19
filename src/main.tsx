@@ -12,7 +12,7 @@ import CampaignsPage from './pages/CampaignsPage';
 import CampaignPage from './pages/CampaignPage';
 import JobsPage from './pages/JobsPage';
 import SettingsPage from './pages/SettingsPage';
-import * as Sentry from "@sentry/react";
+// import * as Sentry from "@sentry/react";
 import JobPage from './pages/JobPage';
 
 const router = createBrowserRouter([

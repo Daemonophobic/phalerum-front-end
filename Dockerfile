@@ -19,8 +19,8 @@ RUN rm -rf .git
 # Build the application
 RUN npm run build
 
-# Expose port 3000 for the application
+# Expose port 9000 for the application
 EXPOSE 9000
 
 # Start the application
-CMD ["npm", "dev"]
+CMD ["npm", "run", "dev"]
