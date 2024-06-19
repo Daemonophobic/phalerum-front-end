@@ -12,5 +12,12 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ['@fortawesome/*']
+  },
+  define: {
+    'process.env': {
+      VITE_API_BASE_URL: process.env.VITE_API_BASE_URL,
+      VITE_GRAFANA_URL: process.env.VITE_GRAFANA_URL,
+      VITE_DEFAULT_DASHBOARD_GRAFANA_ID: process.env.VITE_DEFAULT_DASHBOARD_GRAFANA_ID,
+    }
   }
 })
