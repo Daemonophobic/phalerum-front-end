@@ -48,7 +48,7 @@ const CampaignPage = () => {
 					<Sidebar active="Campaigns" />
 					<div className="h-full w-full flex justify-center bg-defaultBackground z-0">
 						<iframe
-							src={`https://grafana.stickybits.red/public-dashboards/${campaign.grafanaId}?orgId=1&theme=light`}
+							src={`${import.meta.env.VITE_GRAFANA_URL}/public-dashboards/${campaign.grafanaId}?orgId=1&theme=light`}
 							className="w-full h-full"
 						></iframe>
 					</div>

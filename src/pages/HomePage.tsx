@@ -32,7 +32,7 @@ const HomePage = () => {
 					<Sidebar active="Home" />
 					<div className="h-full w-full flex justify-center bg-defaultBackground z-0">
 						<iframe
-							src="https://grafana.stickybits.red/public-dashboards/b31db6b66536463b8a7a48cc6ba5cf7f?orgId=1&theme=light"
+							src={`${import.meta.env.VITE_GRAFANA_URL}/public-dashboards/${import.meta.env.VITE_DEFAULT_DASHBOARD_GRAFANA_ID}?orgId=1&theme=light`}
 							className="w-full h-full"
 						></iframe>
 					</div>
