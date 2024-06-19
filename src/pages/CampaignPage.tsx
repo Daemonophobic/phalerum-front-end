@@ -3,10 +3,14 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
+import { useParams } from 'react-router-dom';
+import CampaignDto from '../data/DataTransferObjects/CampaignDto';
 
-const HomePage = () => {
-	document.title = 'Home - A-ware BSF';
+const CampaignPage = () => {
+	document.title = 'Campaigns - A-ware BSF';
 
+	const campaignId = useParams().id;
+	const [campaign, setCampaign] = useState<Partial<CampaignDto>>({});
 	const [showLoader, setShowLoader] = useState<boolean>(true);
 
 	useEffect(() => {
@@ -14,12 +18,24 @@ const HomePage = () => {
 		validator
 			.validateAuthenticated()
 			.then((result) => {
-				result ?
-					setShowLoader(false)
+				result
+					? setShowLoader(false)
 					: (window.location.href = '/auth/login');
 			})
 			.catch((_: Error) => {
 				window.location.href = '/auth/login';
+			});
+
+		if (campaignId === undefined) window.location.href = '/campaigns';
+
+		validator
+			.validateCampaign(campaignId ?? '')
+			.then((result) => {
+				if ('error' in result) window.location.href = '/campaigns';
+				setCampaign(result);
+			})
+			.catch((_: Error) => {
+				window.location.href = '/campaigns';
 			});
 	}, []);
 
@@ -29,10 +45,10 @@ const HomePage = () => {
 			<div className="flex flex-col h-screen w-screen">
 				<Header />
 				<div className="flex w-full h-full">
-					<Sidebar active="Home" />
+					<Sidebar active="Campaigns" />
 					<div className="h-full w-full flex justify-center bg-defaultBackground z-0">
 						<iframe
-							src="https://grafana.stickybits.red/public-dashboards/b31db6b66536463b8a7a48cc6ba5cf7f?orgId=1&theme=light"
+							src={`https://grafana.stickybits.red/public-dashboards/${campaign.grafanaId}?orgId=1&theme=light`}
 							className="w-full h-full"
 						></iframe>
 					</div>
@@ -42,4 +58,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default CampaignPage;

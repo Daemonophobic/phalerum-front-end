@@ -3,9 +3,10 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Validator from '../helpers/Validator';
 import LoadingPage from './LoadingPage';
+import JobPanel from '../components/JobPanel';
 
-const HomePage = () => {
-	document.title = 'Home - A-ware BSF';
+const JobsPage = () => {
+	document.title = 'Jobs - A-ware BSF';
 
 	const [showLoader, setShowLoader] = useState<boolean>(true);
 
@@ -14,8 +15,8 @@ const HomePage = () => {
 		validator
 			.validateAuthenticated()
 			.then((result) => {
-				result ?
-					setShowLoader(false)
+				result
+					? setShowLoader(false)
 					: (window.location.href = '/auth/login');
 			})
 			.catch((_: Error) => {
@@ -29,12 +30,9 @@ const HomePage = () => {
 			<div className="flex flex-col h-screen w-screen">
 				<Header />
 				<div className="flex w-full h-full">
-					<Sidebar active="Home" />
+					<Sidebar active="Jobs" />
 					<div className="h-full w-full flex justify-center bg-defaultBackground z-0">
-						<iframe
-							src="https://grafana.stickybits.red/public-dashboards/b31db6b66536463b8a7a48cc6ba5cf7f?orgId=1&theme=light"
-							className="w-full h-full"
-						></iframe>
+						<JobPanel />
 					</div>
 				</div>
 			</div>
@@ -42,4 +40,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default JobsPage;
