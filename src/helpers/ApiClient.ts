@@ -10,7 +10,13 @@ export default class ApiClient {
 	};
 
 	constructor() {
-		this.apiUrl = import.meta.env.VITE_API_BASE_URL;
+		if ("RUNTIME_CONFIG" in window && typeof window.RUNTIME_CONFIG === "object" && window.RUNTIME_CONFIG !== null) {
+			if ("VITE_API_BASE_URL" in window.RUNTIME_CONFIG && typeof window.RUNTIME_CONFIG.VITE_API_BASE_URL === "string") {
+				this.apiUrl = window.RUNTIME_CONFIG.VITE_API_BASE_URL;
+			}
+		} else {
+			this.apiUrl = import.meta.env.VITE_API_BASE_URL;
+		}
 	}
 
 	public authenticateUser = async (
